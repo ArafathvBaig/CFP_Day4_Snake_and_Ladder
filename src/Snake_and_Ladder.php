@@ -16,40 +16,44 @@ class SnakeAndLadder
 
     /**
      * Function to get the option for next step
-     * Passing diceRoll as a parameter 
+     * Non-Parameter Function 
      * Using Switch case to check option and print position
      */
-    function option($diceRoll)
+    function option()
     {
-        $optionCheck = rand(0, 2);
-        echo "Option:: " . $optionCheck . "\n";
-        switch ($optionCheck) {
-            case $this->LADDER:
-                $this->position += $diceRoll;
-                echo "Position:: " . $this->position . "\n";
-                break;
-            case $this->SNAKE:
-                $this->position -= $diceRoll;
-                echo "Position:: " . $this->position . "\n";
-                break;
-            default:
-                $this->position = $this->position;
-                echo "Position:: " . $this->position . "\n";
-                break;
+        while ($this->position < 100) {
+            $diceRoll=$this->rollDice();
+            $optionCheck = rand(0, 2);
+            echo "Option:: " . $optionCheck . "\n";
+            switch ($optionCheck) {
+                case $this->LADDER:
+                    $this->position += $diceRoll;
+                    break;
+                case $this->SNAKE:
+                    $this->position -= $diceRoll;
+                    if ($this->position <= 0) {
+                        $this->position = 0;
+                    }
+                    break;
+                default:
+                    $this->position = $this->position;
+                    break;
+            }
+            echo "Position:: " . $this->position . "\n";
         }
     }
 
     /**
      * Function to get the user to roll th dice
      * Printing the Number on the dice
-     * callin option function, passing diceRoll as parameter
+     * Returns diceRoll
      */
     function rollDice()
     {
         $diceRoll = rand(1, 6);
         echo "Number on Dice:: " . $diceRoll . "\n";
-        $this->option($diceRoll);
+        return $diceRoll;
     }
 }
 $snakeAndLadder = new SnakeAndLadder();
-$snakeAndLadder->rollDice();
+$snakeAndLadder->option();
