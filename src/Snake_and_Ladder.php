@@ -13,6 +13,7 @@ class SnakeAndLadder
     public $SNAKE = 2;
 
     public $position = 0;
+    public $diceRollCount = 0;
 
     /**
      * Function to get the option for next step
@@ -55,9 +56,11 @@ class SnakeAndLadder
     function rollDice()
     {
         $diceRoll = rand(1, 6);
+        $this->diceRollCount++;
         echo "Number on Dice:: " . $diceRoll . "\n";
         return $diceRoll;
     }
 }
 $snakeAndLadder = new SnakeAndLadder();
 $snakeAndLadder->option();
+echo "Total Dice Roll Count:: " . $snakeAndLadder->diceRollCount;
