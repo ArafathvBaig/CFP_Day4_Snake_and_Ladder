@@ -2,4 +2,5 @@
 echo "Welcome to Snake and Ladder Computation Problem\n";
 
 $startPosition = 0;
-echo "Start Position:: ".$startPosition;
+$diceRoll = rand(1,6);
+echo "Position of Player:: ".$diceRoll;
